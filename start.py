@@ -8,6 +8,8 @@ from RockMap import RockMap
 import Jimmy
 import Terrain
 
+jimmy_loc = Jimmy.jimmy_generate(9,9)
+
 inventory = []
 
 map = RockMap()
@@ -15,7 +17,9 @@ map = RockMap()
 def print_status():
     print("Status")
     terrain_number = map.get_terrain()
-    print("Jimmy says: %s" % Jimmy.jimmy_comment(random.randint(0,8)))
+    pos = map.position
+    jimmy_distance = Jimmy.jimmy_distance((pos[0], pos[1]), jimmy_loc)
+    print("Jimmy says: %s" % Jimmy.jimmy_comment(jimmy_distance))
     print("Terrain: %s " % Terrain.get_description(terrain_number))
 
 def walk(x, y):

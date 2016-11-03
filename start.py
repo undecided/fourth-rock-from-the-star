@@ -14,21 +14,30 @@ inventory = []
 
 map = RockMap()
 
+def win(pos):
+    if Jimmy.jimmy_distance((pos[0], pos[1]), jimmy_loc) <= 1:
+        print("You found Jimmy!! You win!!")
+        exit()
+
+
+
 def print_status():
     print("Status")
     terrain_number = map.get_terrain()
     pos = map.position
     jimmy_distance = Jimmy.jimmy_distance((pos[0], pos[1]), jimmy_loc)
+    print("You are %d away from Jimmy" % jimmy_distance)
+    win(pos)
     print("Jimmy says: %s" % Jimmy.jimmy_comment(jimmy_distance))
     print("Terrain: %s " % Terrain.get_description(terrain_number))
 
 def walk(x, y):
+    print_status()
     map.move_player(x,y)
     print('Walking up %s and right %s...' % (x, y))
 
 @when('walk north')
 def walk_north():
-    print_status()
     walk(0, 1)
 
 @when('walk east')
@@ -66,7 +75,7 @@ def brexit():
     exit()
 
 
-
+print_status()
 
 start()
 

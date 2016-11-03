@@ -3,7 +3,12 @@
 
 from adventurelib import *
 
+from rockmap import RockMap
+
+map = RockMap()
+
 def walk(x, y):
+	map.move_player(x,y)
     print('Walking up %s and right %s...' % (x, y))
 
 @when('walk north')
@@ -33,10 +38,15 @@ def take(thing):
     print('You take the %s.' % thing)
     inventory.append(thing)
 
+@when('examine THING')
+def take(thing):
+    print('You take the %s.' % thing)
+    inventory.append(thing)
+
 
 @when('brexit')
 def brexit():
-    print("Geee, thanks...")
+    print("Geee, thanks... \nInvoking Article 50 now. Or maybe in a couple of months. Maybe.\nExiting now. *sobs*")
     exit()
 
 

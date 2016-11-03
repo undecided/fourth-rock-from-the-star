@@ -26,7 +26,10 @@ class RockMap:
 class Square():
     def __init__(self, description):
         self.description = description
-        self.terrain = random.randint(0, 15)
+        if random.randint(0,4) == 3:
+            self.terrain = random.randint(0, 15)
+        else:
+            self.terrain = 0
 
 
 a = RockMap()

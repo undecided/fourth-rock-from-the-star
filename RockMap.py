@@ -12,9 +12,18 @@ class RockMap:
         self.position = [5,5]
 
     def move_player(self, x, y):
-
-        self.position[0] += x
-        self.position[1] += y
+        newx = self.position[0] + x
+        if(newx > 9):
+            newx = 0
+        elif(newx < 0):
+            newx = 9
+        newy = self.position[1] + y
+        if(newy > 9):
+            newy = 0
+        elif(newy < 0):
+            newy = 9
+        self.position[0] = newx
+        self.position[1] = newy
         print(self.map[self.position[0]][self.position[1]].description)
 
     def get_terrain(self):

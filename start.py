@@ -1,20 +1,22 @@
 #!/usr/bin/env python3
 
+import random
 
 from adventurelib import *
 
 from RockMap import RockMap
+import Jimmy
+import Terrain
 
 inventory = []
 
 map = RockMap()
-# terrain = RockTerrain()
 
 def print_status():
     print("Status")
     terrain_number = map.get_terrain()
-    print("Terrain: %d " % terrain_number) # terrain.get_description(terrain_number)
-
+    print("Jimmy says: %s" % Jimmy.jimmy_comment(random.randint(0,8)))
+    print("Terrain: %s " % Terrain.get_description(terrain_number))
 
 def walk(x, y):
     map.move_player(x,y)
@@ -42,20 +44,17 @@ def despair():
     print("Waaaaaahhhhhhh!!!")
     print_status()
 
-
-
 @when('take THING')
 def take(thing):
     print('You take the %s.' % thing)
     inventory.append(thing)
     print_status()
 
-@when('examine THING')
-def examine(thing):
-    print('You take the %s.' % thing)
-    inventory.append(thing)
-    print_status()
-
+# @when('examine THING')
+# def examine(thing):
+#     print('You take the %s.' % thing)
+#     inventory.append(thing)
+#     print_status()
 
 @when('brexit')
 def brexit():

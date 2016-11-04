@@ -24,7 +24,6 @@ class RockMap:
             newy = 9
         self.position[0] = newx
         self.position[1] = newy
-        print(self.map[self.position[0]][self.position[1]].description)
 
     def get_terrain(self):
         pos = self.position
@@ -42,7 +41,5 @@ class Square():
 
 
 a = RockMap()
-print(a.position, a.get_terrain())
 a.move_player(-1,-1)
-print(a.position, a.get_terrain())
 

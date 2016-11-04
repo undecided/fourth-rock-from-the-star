@@ -9,7 +9,7 @@ def get_description(t):
     if t == 7: return "Russia"
     if t == 9: return "Tarmac"
     if t == 10: return "Wonderland"
-    return ""
+    return "nothing interesting"
 
 def is_passable(t):
     if t == 1: return True
